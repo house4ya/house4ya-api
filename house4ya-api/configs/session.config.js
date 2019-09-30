@@ -3,7 +3,7 @@ const MongoStore = require('connect-mongo')(session)
 const mongoose = require('mongoose')
 
 module.exports = session({
-  secret: 'secret goes here so TODO',
+  secret: process.env.COOKIE_SECRET || 'cookie secret',
   resave: false,
   saveUninitialized: true,
   cookie: {
