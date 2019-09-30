@@ -9,7 +9,7 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 require('./configs/db.configs')
 require('./configs/passport.config')
-
+const session = require('./configs/session.config')
 
 
 var app = express();
@@ -27,6 +27,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize())
+app.use(session)
+app.use(passport.session())
+
+
 
 var authRouter = require('./routes/authRoute');
 var usersRouter = require('./routes/users');
