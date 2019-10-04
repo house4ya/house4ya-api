@@ -29,3 +29,16 @@ module.exports.login = (req, res, next) => {
     }
   })(req, res, next)
 }
+
+module.exports.logout = (req, res, next) => {
+  req.logout();
+  res.status(204).json()
+}
+
+module.exports.profile = (req, res, next) => {
+  User.findById(req.user.id)
+  .then(user => res.status(201).json(user))
+  .catch(next)
+  console.log(req.user)
+  
+}

@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
-bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs')
 const SALT_FACTOR = 10
 const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-const URL_PATTERN = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi
 const PASSWORD_PATTERN = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/
 
 const usersSchema = new mongoose.Schema({
@@ -33,7 +32,7 @@ const usersSchema = new mongoose.Schema({
   timestamps: true,
   toJSON: {
     transform: (doc, ret) => {
-      ret.id = doc.id
+      ret.id = doc._id
       delete ret._id
       delete ret.__v
       delete ret.password    //check this out
