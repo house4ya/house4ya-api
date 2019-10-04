@@ -13,25 +13,27 @@ passport.deserializeUser((id, next) => {
   .catch(next)
 })
 
+
+
 passport.use('auth-local', new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password'
 }, (email, password, next) => {
-  User.findOne( { email: email })
-  .then(user => {
-    console.log('USER: ', user)
-    if(!user) {
-      next(null, false, 'Invalid email or password')
-    }else {
-      return user.checkPassword(password)
-      .then(match => {
-        if (!match) {
-          next(null, false, 'Invalid email or password')
-        }else {
-          next(null, user)
-        }
-      })
-    }
-  })
-  .catch(error => next(error))
-}))
+  User.findOne({ email: email })
+    .then(user => {
+      if (!user) {
+        next(null, false, 'Invalid email or password')
+      } else {
+        return user.checkPassword(password)
+          .then(match => {
+            if (!match) {
+              next(null, false, 'Invalid email or password')
+            } else {
+              next(null, user)
+            }
+          })
+      }
+    })
+    .catch(error => next(error))
+}));
+
