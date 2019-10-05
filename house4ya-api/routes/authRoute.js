@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
 const authController = require('../controllers/authController')
+const isAuth = require('../middlewares/isAuth.mid')
 
 /* GET home page. */
 router.post('/register', authController.register );
 router.post('/login', authController.login )
-router.post('/logout', authController.logout )
+router.post('/logout', isAuth.isAuthenticated, authController.logout )
 
-router.get('/profile', authController.profile )
+router.get('/profile', isAuth.isAuthenticated, authController.profile )
 
 module.exports = router;
