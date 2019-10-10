@@ -45,11 +45,12 @@ module.exports.profile = (req, res, next) => {
 
 module.exports.updateProfile = (req, res, next)=> {
   const user = req.user
+  console.log(req.body)
 
   Object.keys(req.body).forEach(prop => user[prop] = req.body[prop])
   if (req.file) user.avatar = req.file.secure_url
 
   user.save()
-  .then(user = res.status(201).json(user)
-  .catch(next))
+  .then(user => res.status(201).json(user))
+  .catch(next)
 }
