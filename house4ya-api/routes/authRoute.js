@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const authController = require('../controllers/authController')
 const isAuth = require('../middlewares/isAuth.mid')
+const uploader = require('../configs/storage.config')
 
 /* GET home page. */
 router.post('/register', authController.register );
