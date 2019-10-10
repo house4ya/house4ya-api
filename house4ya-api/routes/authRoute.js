@@ -11,4 +11,6 @@ router.post('/logout', isAuth.isAuthenticated, authController.logout )
 
 router.get('/profile', isAuth.isAuthenticated, authController.profile )
 
+router.put('/profile', uploader.single('avatar'), isAuth.isAuthenticated, authController.updateProfile )
+
 module.exports = router;
