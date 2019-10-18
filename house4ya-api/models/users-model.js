@@ -28,6 +28,10 @@ const usersSchema = new mongoose.Schema({
     type: String,
     required: false,
     match: [URL_PATTERN, 'Invalidad url pattern']
+  },
+  properties: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'House'
   }
     
   
