@@ -35,3 +35,18 @@ module.exports.listHouses = (req, res, next) => {
   .catch(next)
   
 }    
+
+module.exports.editHouse = (req, res, next) => {   //maybe it'bb be bether send it in the body instead of  params
+  if ((req.user._id) == (req.params.owner)) { 
+  House.findById(req.params.house)
+    .then(house => {
+      
+        Object.keys(req.body).forEach(prop => house[prop] = req.body[prop])
+        if (req.file) house.photos = req.file.secure_url
+        house.save()
+        .then(house => res.status(201).json(house))
+    
+  })
+    .catch(next)
+  } else { res.json("you have not permission")}
+}
