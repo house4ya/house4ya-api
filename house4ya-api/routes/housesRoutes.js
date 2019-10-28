@@ -3,6 +3,7 @@ const router = express.Router()
 const houseController = require('../controllers/houseController')
 
 router.get('/list', houseController.list )
+router.get('/properties', houseController.listHouses)
 
 router.post('/create_house', houseController.createHouse)
 

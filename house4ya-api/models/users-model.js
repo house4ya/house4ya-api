@@ -4,7 +4,7 @@ const SALT_FACTOR = 10
 const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 const PASSWORD_PATTERN = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/
 const URL_PATTERN = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
-
+const House = require('./house-model')
 
 const usersSchema = new mongoose.Schema({
   username: {
@@ -29,15 +29,16 @@ const usersSchema = new mongoose.Schema({
     required: false,
     match: [URL_PATTERN, 'Invalidad url pattern']
   },
-  properties: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'House'
-  }
+  // properties: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'House'
+  // }
     
   
 }, {
   timestamps: true,
   toJSON: {
+    virtuals: true,
     transform: (doc, ret) => {
       ret.id = doc._id
       delete ret._id
@@ -47,6 +48,8 @@ const usersSchema = new mongoose.Schema({
     }
   }
 })
+
+
 
 usersSchema.pre('save', function(next) {
   const user = this
@@ -64,6 +67,12 @@ usersSchema.pre('save', function(next) {
       .catch(next)
     })
   }
+})
+
+usersSchema.virtual('houses', {
+  ref: House.modelName,
+  localField: '_id',
+  foreignField: 'owner'
 })
 
 usersSchema.methods.checkPassword = function(password) {
