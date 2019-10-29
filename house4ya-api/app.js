@@ -38,7 +38,7 @@ app.use(passport.session())
 
 
 const authRouter = require('./routes/authRoute');
-const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/usersRoutes');
 const housesRoutes = require('./routes/housesRoutes')
 
 app.use('/', authRouter);
