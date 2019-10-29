@@ -50,3 +50,16 @@ module.exports.editHouse = (req, res, next) => {   //maybe it'bb be bether send 
     .catch(next)
   } else { res.json("you have not permission")}
 }
+
+module.exports.deleteHouse = (req, res, next) => {
+  if ((req.user._id) == (req.params.owner)) {
+    House.findByIdAndDelete(req.params.house)
+    .then(house => {
+      res.status(200).json('house deleted successfully')
+    })
+    .catch(next)
+  } else {
+    res.json('you have no permission')
+  }
+
+}

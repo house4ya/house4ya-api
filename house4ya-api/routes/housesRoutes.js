@@ -10,4 +10,6 @@ router.post('/create_house', houseController.createHouse)
 
 router.put('/edit_house/:owner/:house',uploader.single('photos'), houseController.editHouse)
 
+router.delete('/delete_house/:owner/:house', houseController.deleteHouse)
+
 module.exports = router
