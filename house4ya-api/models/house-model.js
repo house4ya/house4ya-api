@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+
 const houseSchema = new mongoose.Schema({
   address: {
     type: String
@@ -14,7 +15,13 @@ const houseSchema = new mongoose.Schema({
     type: String
   },
   owner: { type: mongoose.Schema.Types.ObjectId,
-  ref: 'User'}
+  ref: 'User'},
+
+  interested: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
+
 
 },{ timestamps: true,
 toJSON: {
@@ -25,6 +32,8 @@ toJSON: {
     return ret 
   }
 }})
+
+
 
 const House = mongoose.model('House', houseSchema)
 

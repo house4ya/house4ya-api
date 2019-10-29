@@ -29,10 +29,7 @@ const usersSchema = new mongoose.Schema({
     required: false,
     match: [URL_PATTERN, 'Invalidad url pattern']
   },
-  // properties: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'House'
-  // }
+  
     
   
 }, {
@@ -73,6 +70,12 @@ usersSchema.virtual('houses', {
   ref: House.modelName,
   localField: '_id',
   foreignField: 'owner'
+});
+
+usersSchema.virtual('favourites',{
+  ref: House.modelName,
+  localField: '_id',
+  foreignField: 'interested'
 })
 
 usersSchema.methods.checkPassword = function(password) {
