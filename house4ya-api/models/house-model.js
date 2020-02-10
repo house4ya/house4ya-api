@@ -17,10 +17,10 @@ const houseSchema = new mongoose.Schema({
   owner: { type: mongoose.Schema.Types.ObjectId,
   ref: 'User'},
 
-  interested: {
+  interested: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
-  }
+  }]
 
 
 },{ timestamps: true,

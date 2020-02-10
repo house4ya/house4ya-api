@@ -9,7 +9,9 @@ module.exports.list = (req, res, next) => {
 
 module.exports.addFavourites = (req, res, next) => {
   user = req.user._id
-  House.findByIdAndUpdate(req.params.id, {interested:req.user._id})
+  //House.findByIdAndUpdate(req.params.id, {interested:req.user._id})
+  
+  House.findByIdAndUpdate(req.params.id, {$push:{interested:req.user._id} })
   .then( house => { 
   User.findByIdAndUpdate(user, { $push:{favourites: house.interested}})
   .then( response => res.status(201).json(response))
