@@ -64,3 +64,11 @@ module.exports.deleteHouse = (req, res, next) => {
 
 }
 
+module.exports.detailHouse = (req, res, next) => {
+  House.findById(req.params.id)
+  .then(house => {
+    res.status(200).json(house)
+  })
+  .catch(next)
+}
+

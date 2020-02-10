@@ -5,6 +5,7 @@ const uploader = require('../configs/storage.config')
 
 router.get('/list', houseController.list )
 router.get('/properties', houseController.listHouses)
+router.get('/detail_house/:id', houseController.detailHouse)
 
 router.post('/create_house', houseController.createHouse)
 
