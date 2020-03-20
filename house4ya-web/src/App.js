@@ -1,12 +1,15 @@
 import React from 'react';
 import './App.css';
+import NavBar from './misc/NavBar';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>first commit</h1>
-      </header>
+        <div>
+          <NavBar/>
+          <h1>first commit</h1>
+        </div>
+        
     </div>
   );
 }
