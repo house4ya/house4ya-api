@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
 import NavBar from './misc/NavBar';
+import Card from './components/Cards';
 
 function App() {
   return (
     <div className="App">
         <div>
-          <NavBar/>
-          <h1>first commit</h1>
+          <NavBar />
+          <Card />
         </div>
         
     </div>
