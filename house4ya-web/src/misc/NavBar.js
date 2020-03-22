@@ -1,15 +1,16 @@
 import React from 'react' 
 import house4yaLogo from '../imgs/house4ya.logo.png'
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
   
   return(
     <nav className="navbar" role="navigation" aria-label="main navigation">
   <div className="navbar-brand">
-    <div>
+    <Link to='/home' >
     <img src={house4yaLogo} width="60"  height="10" alt="house4ya logo" />
 
-    </div>
+    </Link>
     
 
     <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" href="todo">
@@ -66,12 +67,12 @@ const NavBar = () => {
     <div className="navbar-end">
       <div className="navbar-item">
         <div className="buttons">
-          <a className="button is-primary" href="todo">
+          <Link to='/signup' className="button is-primary" href="todo">
             <strong>Sign up</strong>
-          </a>
-          <a className="button is-light" href="todo">
+          </Link>
+          <Link to='/signin' className="button is-light" href="todo">
             Log in
-          </a>
+          </Link>
         </div>
       </div>
     </div>
