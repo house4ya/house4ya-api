@@ -3,6 +3,7 @@ import './App.css';
 import NavBar from './misc/NavBar';
 import Card from './components/Cards';
 import Login from './components/login';
+import Register from './components/Register';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
           <NavBar />
           <Card />
           <Login />
+          <Register />
         </div>
         
     </div>
