@@ -73,6 +73,9 @@ const NavBar = () => {
           <Link to='/signin' className="button is-light" href="todo">
             Log in
           </Link>
+          <Link to='/profile' className="button" >
+            Profile
+          </Link>
         </div>
       </div>
     </div>
