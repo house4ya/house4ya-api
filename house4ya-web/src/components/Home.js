@@ -25,9 +25,12 @@ class Home extends Component {
         {this.state.houses.map(
           house =>
           <div>
+            <hr></hr>
             <h3>{house.address}</h3>
             <h3>{house.owner}</h3>
             <p>{house.description}</p>
+            
+            
           </div>
         )}
       </div>

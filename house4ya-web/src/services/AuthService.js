@@ -6,6 +6,9 @@ const register = (user) => http.post('/register', user)
 const login = (user) => http.post('/login', user)
 .then(res => Promise.resolve(res.data))
 
+const logout = () => http.post('/logout')
+.then(res => Promise.resolve(res.data))
+
 export default {
-  register, login
+  register, login, logout
 }
