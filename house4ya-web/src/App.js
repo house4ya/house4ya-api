@@ -8,6 +8,7 @@ import { Switch, Route, Redirect} from 'react-router-dom'
 import Profile from './components/Profile';
 import Home from './components/Home';
 import HouseForm from './components/HouseForm';
+import Properties from './components/Properties';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route  path='/signup' component={ Register } />
       <Route path='/profile' component={ Profile } />
       <Route path='/upload_house' component={ HouseForm } />
+      <Route path='/properties' component={ Properties } />
       <Redirect to='/home' />
      </Switch>
       

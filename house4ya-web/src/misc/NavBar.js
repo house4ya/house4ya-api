@@ -89,6 +89,7 @@ class NavBar extends Component {
             </Link>
             <button onClick={this.handleLogout}>Log out</button>
             <Link to='/upload_house' className='button'>Upload property</Link>
+            <Link to='/properties' className='button'>Own properties</Link>
           </div>
         </div>
       </div>
