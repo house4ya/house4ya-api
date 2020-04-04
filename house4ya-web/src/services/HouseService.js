@@ -6,6 +6,9 @@ const getHouses = () => http.get('/houses/list')
 const createHouses = (house) => http.post('/houses/create_house', house)
 .then(res => Promise.resolve(res.data))
 
+const getProperties = () => http.get('/houses/properties')
+.then( res => Promise.resolve(res.data))
+
 export default {
-  getHouses, createHouses
+  getHouses, createHouses, getProperties
 }
