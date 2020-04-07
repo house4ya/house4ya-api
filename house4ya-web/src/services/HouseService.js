@@ -9,6 +9,9 @@ const createHouses = (house) => http.post('/houses/create_house', house)
 const getProperties = () => http.get('/houses/properties')
 .then( res => Promise.resolve(res.data))
 
+const getHouseDetail = (id) => http.get(`/houses/detail_house/${id}`)
+.then( res => Promise.resolve(res.data))
+
 export default {
-  getHouses, createHouses, getProperties
+  getHouses, createHouses, getProperties, getHouseDetail
 }

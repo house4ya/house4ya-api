@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-class Card extends Component {
+class Card  extends Component {
+  
   constructor(props){
     super(props)
+    this.state = {
+      
+    }
   }
-
   render() {
+
+  
     return(
-      <Link class="card" to={this.props.house.id}>
+      <Link class="card" to={`/home/${this.props.house.id}`}>
   <div class="card-image">
     <figure class="image is-4by3">
       <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"/>
@@ -36,7 +41,8 @@ class Card extends Component {
   </div>
 </Link>
     )
-  }
+  
+}
 }
 
 export default Card
