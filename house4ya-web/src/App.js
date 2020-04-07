@@ -9,19 +9,22 @@ import Profile from './components/Profile';
 import Home from './components/Home';
 import HouseForm from './components/HouseForm';
 import Properties from './components/Properties';
+import detailHouse from './components/detailHouse';
 
 function App() {
   return (
     <div className="App">
      <NavBar/>
      <Switch>
-       <Route path='/home' component={ Home } />
+       <Route exact path='/home' component={ Home } />
       <Route path='/signin' component={ Login } />
       <Route  path='/signup' component={ Register } />
       <Route path='/profile' component={ Profile } />
       <Route path='/upload_house' component={ HouseForm } />
       <Route path='/properties' component={ Properties } />
-      <Redirect to='/home' />
+      <Route path='/house' component={ detailHouse } />
+      <Route path='/home/:id' component={ detailHouse } />
+      {/* <Redirect to='/home' /> */}
      </Switch>
       
        
