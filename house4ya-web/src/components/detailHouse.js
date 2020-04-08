@@ -5,13 +5,13 @@ class detailHouse extends Component {
   
     
     state = {
-      house: null
+      house: ''
     }
 
     fetchHouse = () => {
       HouseService.getHouseDetail(this.props.match.params.id)
-      .then(Reshouse => {
-        this.setState({ house: Reshouse})
+      .then(ResHouse => {
+        this.setState({ house: ResHouse })
       })
     }
 
@@ -25,6 +25,8 @@ class detailHouse extends Component {
       <div>
         detailed house here
         <p>{this.props.match.params.id}</p>
+        <h3>{this.state.house.address}</h3>
+        
         
 
       </div>
