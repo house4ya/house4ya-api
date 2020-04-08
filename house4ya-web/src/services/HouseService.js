@@ -12,6 +12,9 @@ const getProperties = () => http.get('/houses/properties')
 const getHouseDetail = (id) => http.get(`/houses/detail_house/${id}`)
 .then( res => Promise.resolve(res.data))
 
+const deleteHouse = (owner, house) => http.delete(`/houses/delete_house/${owner}/${house}`)
+.then( res =>(Promise.resolve(res.data)))
+
 export default {
-  getHouses, createHouses, getProperties, getHouseDetail
+  getHouses, createHouses, getProperties, getHouseDetail, deleteHouse
 }
