@@ -10,6 +10,7 @@ import Home from './components/Home';
 import HouseForm from './components/HouseForm';
 import Properties from './components/Properties';
 import detailHouse from './components/detailHouse';
+import DeleteProperty from './components/DeleteProperty';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Route path='/properties' component={ Properties } />
       <Route path='/house' component={ detailHouse } />
       <Route path='/home/:id' component={ detailHouse } />
+      <Route path='/property/:house/:owner' component={ DeleteProperty } />
       {/* <Redirect to='/home' /> */}
      </Switch>
       

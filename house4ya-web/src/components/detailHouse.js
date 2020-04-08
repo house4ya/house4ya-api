@@ -26,6 +26,7 @@ class detailHouse extends Component {
         detailed house here
         <p>{this.props.match.params.id}</p>
         <h3>{this.state.house.address}</h3>
+        <p>{this.state.house.description}</p>
         
         
 
