@@ -9,7 +9,7 @@ class HouseForm extends Component {
      
       address: '',
       description: '',
-      squareMeters: '',
+      squareMetres: '',
       owner: '',
       interested: []
      
@@ -43,7 +43,7 @@ class HouseForm extends Component {
         <form onSubmit={this.handleFormSubmit}>
           <input name='address' type='text' placeholder='address' value={this.state.address} onChange={(e) => this.handleChange(e)} />
           <input name='description' type='text' placeholder='write a description here...' value={this.state.description} onChange={ (e) => this.handleChange(e) } />
-          <input name='squareMeters' type='number' placeholder='size in square meters'  value={this.state.squareMeters} onChange={ (e) => this.handleChange(e) } />
+          <input name='squareMetres' type='number' placeholder='size in square meters'  value={this.state.squareMetres} onChange={ (e) => this.handleChange(e) } />
           <input  type='submit' placeholder='upload property'/>
 
         </form>

@@ -15,6 +15,16 @@ const getHouseDetail = (id) => http.get(`/houses/detail_house/${id}`)
 const deleteHouse = (owner, house) => http.delete(`/houses/delete_house/${owner}/${house}`)
 .then( res =>(Promise.resolve(res.data)))
 
+const editHouse = (owner, houseId, property) => {
+  const data = new FormData();
+  Object.keys(property).forEach(prop => {
+    return data.append(prop, property[prop])
+  })
+ return http.put(`/houses/edit_house/${owner}/${houseId}`, data)
+.then( res => Promise.resolve(res.data))
+}
+
+
 export default {
-  getHouses, createHouses, getProperties, getHouseDetail, deleteHouse
+  getHouses, createHouses, getProperties, getHouseDetail, deleteHouse, editHouse
 }
