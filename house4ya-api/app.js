@@ -13,6 +13,7 @@ const passport = require('passport')
 require('./configs/db.configs')
 const session = require('./configs/session.config')
 require('./configs/passport.config')
+const cors = require('./configs/cors.config')
 
 
 
@@ -28,6 +29,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors)
 //app.use(express.static(path.join(__dirname, 'public')));
 
 

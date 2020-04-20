@@ -34,6 +34,7 @@ class Properties extends Component {
           <hr></hr>
           <h3>{property.address}</h3>
           <p>{property.description}</p>
+         <button><Link to={`/edit_property/${property.id}/${property.owner}`}>Edit property</Link></button> 
           <button>delete</button>
         </Link>
           

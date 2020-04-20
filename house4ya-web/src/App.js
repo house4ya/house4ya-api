@@ -11,6 +11,7 @@ import HouseForm from './components/HouseForm';
 import Properties from './components/Properties';
 import detailHouse from './components/detailHouse';
 import DeleteProperty from './components/DeleteProperty';
+import EditHouse from './components/EditHouse';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <Route path='/house' component={ detailHouse } />
       <Route path='/home/:id' component={ detailHouse } />
       <Route path='/property/:house/:owner' component={ DeleteProperty } />
+      <Route path='/edit_property/:house/:owner' component={ EditHouse } />
       {/* <Redirect to='/home' /> */}
      </Switch>
       
