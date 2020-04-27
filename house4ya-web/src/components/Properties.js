@@ -30,7 +30,7 @@ class Properties extends Component {
       <div>
         <h1> Your properties</h1>
         {this.state.properties.map(property => 
-        <Link to={`/property/${property.id}/${property.owner}`}>
+        <Link to={`/property/${property.id}/${property.owner}`} key={property.id}>
           <hr></hr>
           <h3>{property.address}</h3>
           <p>{property.description}</p>

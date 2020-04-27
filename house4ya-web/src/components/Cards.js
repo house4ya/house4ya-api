@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import UserService from '../services/UserService'
 
 class Card  extends Component {
   
@@ -9,34 +10,47 @@ class Card  extends Component {
       
     }
   }
+
+  handleAddFavs = () => {
+    UserService.addFavs(this.props.house.id)
+    
+  }
+  
+
   render() {
 
   
     return(
-      <Link class="card" to={`/home/${this.props.house.id}`}>
-  <div class="card-image">
-    <figure class="image is-4by3">
+      <Link className="card" to={`/home/${this.props.house.id}`} key={this.props.house.id}>
+        <button onClick={this.handleAddFavs()} >add favs</button>
+  <div className="card-image">
+    <figure className="image is-4by3">
       <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"/>
     </figure>
   </div>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class="image is-48x48">
+  <div className="card-content">
+    <div className="media">
+      <div className="media-left">
+        <figure className="image is-48x48">
           <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image"/>
         </figure>
       </div>
-      <div class="media-content">
-        <p class="title is-4">John Smith</p>
-        <p class="subtitle is-6">@johnsmith</p>
+      <div className="media-content">
+        <p className="title is-4">John Smith</p>
+        <p className="subtitle is-6">@johnsmith</p>
       </div>
     </div>
+    {/* <div>
+      {this.props.house.photos.map(photo => 
+        <h1>{photo[3]}</h1>
+        )}
+    </div> */}
 
-    <div class="content">
-      <p>{this.props.house.description}</p> <a>@bulmaio</a>.
-      <a href="#">#css</a> <a href="#">#responsive</a>
+    <div className="content">
+      <p>{this.props.house.description}</p> 
+      
       <br/>
-      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+      
     </div>
   </div>
 </Link>

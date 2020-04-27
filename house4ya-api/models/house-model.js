@@ -12,8 +12,9 @@ const houseSchema = new mongoose.Schema({
     type: Number
   },
   photos: {
-    type: String
+    type: [String]
   },
+  
   owner: { type: mongoose.Schema.Types.ObjectId,
   ref: 'User'},
 
