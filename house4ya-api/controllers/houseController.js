@@ -51,6 +51,21 @@ module.exports.editHouse = (req, res, next) => {   //maybe it'bb be bether send 
   } else { res.json("you have not permission")}
 }
 
+module.exports.editHouseImgs = (req, res, next) => {   //maybe it'bb be bether send it in the body instead of  params
+  if ((req.user._id) == (req.params.owner)) { 
+  House.findById(req.params.house)
+    .then(house => {
+      
+        Object.keys(req.body).forEach(prop => house[prop] = req.body[prop])
+        if (req.files) house.photos = req.files.map(photo => photo.secure_url)
+        house.save()
+        .then(house => res.status(201).json(house))
+    
+  })
+    .catch(next)
+  } else { res.json("you have not permission")}
+}
+
 module.exports.deleteHouse = (req, res, next) => {
   if ((req.user._id) == (req.params.owner)) {
     House.findByIdAndDelete(req.params.house)

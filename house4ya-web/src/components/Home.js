@@ -24,7 +24,7 @@ class Home extends Component {
       <div>
         {this.state.houses.map(
         house =>
-        <Card house={house} />
+        <Card house={house} key={house.id}/>
       )}
       </div>
       

@@ -24,7 +24,17 @@ const editHouse = (owner, houseId, property) => {
 .then( res => Promise.resolve(res.data))
 }
 
+const editHousePhotos = (owner, houseId, photos) => {
+  const data = new FormData();
+  for(let i = 0; i < photos.length; i++){
+    data.append('photos', photos[i])
+  }
+  return http.put(`/houses/edit_house/${owner}/${houseId}/imgs`, data)
+.then( res => Promise.resolve(res.data))
+}
+
+
 
 export default {
-  getHouses, createHouses, getProperties, getHouseDetail, deleteHouse, editHouse
+  getHouses, createHouses, getProperties, getHouseDetail, deleteHouse, editHouse, editHousePhotos
 }

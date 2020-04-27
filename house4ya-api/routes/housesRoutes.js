@@ -10,6 +10,7 @@ router.get('/detail_house/:id', houseController.detailHouse)
 router.post('/create_house', houseController.createHouse)
 
 router.put('/edit_house/:owner/:house',uploader.single('photos'), houseController.editHouse)
+router.put('/edit_house/:owner/:house/imgs',uploader.array('photos'), houseController.editHouseImgs)
 
 router.delete('/delete_house/:owner/:house', houseController.deleteHouse)
 
