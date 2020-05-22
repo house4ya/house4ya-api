@@ -6,7 +6,11 @@ const getProfile = () =>  http.get('/profile')
 const addFavs = (id) => http.post(`/users/add_favourites/${id}`)
 .then(res => Promise.resolve(res.data))
 
+const listFavs = () => http.get('users/favourites')
+.then( res => Promise.resolve(res.data))
+
 export default {
   getProfile,
-  addFavs
+  addFavs,
+  listFavs
 }

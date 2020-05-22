@@ -16,7 +16,7 @@ class NavBar extends Component {
 
   render(){
     return(
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      <nav className="navbarw" role="navigation" aria-label="main navigation" >
     <div className="navbar-brand">
       <Link to='/home' >
       <img src={house4yaLogo} width="60"  height="10" alt="house4ya logo" />
@@ -90,6 +90,7 @@ class NavBar extends Component {
             <button onClick={this.handleLogout}>Log out</button>
             <Link to='/upload_house' className='button'>Upload property</Link>
             <Link to='/properties' className='button'>Own properties</Link>
+            <Link to='/favourites' className='button'>See favourites</Link>
           </div>
         </div>
       </div>
