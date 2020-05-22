@@ -11,10 +11,10 @@ class Card  extends Component {
     }
   }
 
-  handleAddFavs = () => {
-    UserService.addFavs(this.props.house.id)
+  // handleAddFavs = () => {
+  //   UserService.addFavs(this.props.house.id)
     
-  }
+  // }
   
 
   render() {
@@ -22,7 +22,8 @@ class Card  extends Component {
   
     return(
       <Link className="card" to={`/home/${this.props.house.id}`} key={this.props.house.id}>
-        <button onClick={this.handleAddFavs()} >add favs</button>
+        <h1>{this.props.house.id}</h1>
+        {/* <button onClick={this.handleAddFavs()} >add favs</button> */}
   <div className="card-image">
     <figure className="image is-4by3">
       <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"/>

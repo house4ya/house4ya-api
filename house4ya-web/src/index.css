@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.navbarw{
+  width: 10px;
+  color: crimson;
+  font: 100;
+  
+}
