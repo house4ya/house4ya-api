@@ -6,8 +6,9 @@ class Favourites extends Component {
   constructor(props){
     super(props)
     this.state = {
-      favourites: [],
-      deletingTarget: ''
+
+      favourites: []
+     
     }
   }
 
@@ -38,7 +39,6 @@ class Favourites extends Component {
           </Link>
         )}
       </div>
-      
 
     )
   }
