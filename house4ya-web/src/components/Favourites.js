@@ -5,7 +5,7 @@ class Favourites extends Component {
   constructor(props){
     super(props)
     this.state = {
-      favourites: ''
+      favourites: []
     }
   }
 
@@ -24,7 +24,13 @@ class Favourites extends Component {
 
   render() {
     return(
-      <h1>this is favs</h1>
+      <div>
+        <h1>this is favs</h1>
+        {this.state.favourites.map(fav => 
+          <h3>{fav.address}</h3>
+        )}
+      </div>
+      
       
     )
   }
