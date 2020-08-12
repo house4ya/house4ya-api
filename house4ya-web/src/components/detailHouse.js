@@ -23,6 +23,11 @@ class detailHouse extends Component {
     handleFavourite = () => {
       UserService.addFavs(this.props.match.params.id)
     }
+
+    deleteFav = () => {
+      UserService.deleteFav(this.props.match.params.id)
+      
+    }
     
 
   
@@ -35,6 +40,8 @@ class detailHouse extends Component {
         <p>{this.props.match.params.id}</p>
         <h3>{this.state.house.address}</h3>
         <p>{this.state.house.description}</p>
+        <button onClick={this.deleteFav}> delete favourite</button>
+        
         
         
 

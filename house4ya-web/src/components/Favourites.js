@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import UserService from '../services/UserService'
+import { Link } from 'react-router-dom'
 
 class Favourites extends Component {
   constructor(props){
     super(props)
     this.state = {
-      favourites: ''
+      favourites: [],
+      deletingTarget: ''
     }
   }
 
@@ -22,10 +24,22 @@ class Favourites extends Component {
     this.fetchFavourites()
   }
 
+  
+  
+  
+
   render() {
     return(
-      <h1>this is favs</h1>
+      <div>
+        <h1>this is favs</h1>
+        {this.state.favourites.map(fav =>
+          <Link to={`/home/${fav.id}`}> 
+            <h3>{fav.address}</h3>
+          </Link>
+        )}
+      </div>
       
+
     )
   }
 }

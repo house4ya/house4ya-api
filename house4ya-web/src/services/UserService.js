@@ -9,8 +9,12 @@ const addFavs = (id) => http.post(`/users/add_favourites/${id}`)
 const listFavs = () => http.get('users/favourites')
 .then( res => Promise.resolve(res.data))
 
+const deleteFav = (id) => http.delete(`/users/delete_favourite/${id}`)
+.then( res => Promise.resolve(res.data))
+
 export default {
   getProfile,
   addFavs,
-  listFavs
+  listFavs,
+  deleteFav
 }
