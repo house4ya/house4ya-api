@@ -13,6 +13,7 @@ import detailHouse from './components/detailHouse';
 import DeleteProperty from './components/DeleteProperty';
 import EditHouse from './components/EditHouse';
 import Favourites from './components/Favourites';
+import EditProfile from './components/EditProfile';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Route path='/property/:house/:owner' component={ DeleteProperty } />
       <Route path='/edit_property/:house/:owner' component={ EditHouse } />
       <Route path='/favourites' component={ Favourites } />
+      <Route path='/edit_profile' component={EditProfile} />
       {/* <Redirect to='/home' /> */}
      </Switch>
       

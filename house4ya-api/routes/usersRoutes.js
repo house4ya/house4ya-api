@@ -8,5 +8,7 @@ router.get('/favourites', usersController.listFavs)
 
 router.post('/add_favourites/:id', usersController.addFavourites)
 
+router.delete('/delete_favourite/:id', usersController.deleteFavourite)
+
 
 module.exports = router;

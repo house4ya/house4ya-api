@@ -27,7 +27,7 @@ const usersSchema = new mongoose.Schema({
   avatar: {
     type: String,
     required: false,
-    match: [URL_PATTERN, 'Invalidad url pattern']
+    //match: [URL_PATTERN, 'Invalidad url pattern']
   },
   
     
