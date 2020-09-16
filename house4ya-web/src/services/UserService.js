@@ -12,9 +12,20 @@ const listFavs = () => http.get('users/favourites')
 const deleteFav = (id) => http.delete(`/users/delete_favourite/${id}`)
 .then( res => Promise.resolve(res.data))
 
+const editProfile = (user) => {
+  const data = new FormData();
+  Object.keys(user).forEach(prop => {
+    return data.append(prop,user[prop])
+  })
+return http.put(`/profile`, data)
+.then(res => Promise.resolve(res.data))
+}
+
+
 export default {
   getProfile,
   addFavs,
   listFavs,
-  deleteFav
+  deleteFav,
+  editProfile
 }
