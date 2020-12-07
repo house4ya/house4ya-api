@@ -1,13 +1,25 @@
 import React, { Component } from 'react'
 import HouseService from '../services/HouseService'
 import Card from './Cards'
+import SearchBox from './searchBox'
 
 class Home extends Component {
   constructor(props){
     super(props)
     this.state = {
-      houses: []
+      houses: [],
+      address: null
     }
+  }
+
+  
+  handleChange = (value) => {
+    //let {name, value } = event.target
+    this.setState({ 
+      
+      address: value
+      
+       })
   }
 
  fetchHouses = () => {
@@ -17,32 +29,30 @@ class Home extends Component {
 
  componentDidMount() {
    this.fetchHouses()
+   
  }
+ 
+
 
   render() {
     return (
       <div>
-        {this.state.houses.map(
-        house =>
-        <Card house={house} key={house.id}/>
-      )}
+        <div>
+    <h1>{this.state.address}</h1>
+          <SearchBox onChange={e => this.handleChange(e)}/>
+        </div>
+        
+        {  
+        this.state.houses.filter(casa => casa.LaCity[0].long_name === this.state.address || casa.LaCity[1].long_name === this.state.address )  //here goes long name of result suggestions
+        .map(  /*here goes a fiter with the city*/ 
+        house =>   
+        <Card house={house} key={house.id} /> 
+        
+      )
+      
+      } 
       </div>
       
-      
-      // <div>
-      //   <h1>Home</h1>
-      //   {this.state.houses.map(
-      //     house =>
-      //     <div>
-      //       <hr></hr>
-      //       <h3>{house.address}</h3>
-      //       <h3>{house.owner}</h3>
-      //       <p>{house.description}</p>
-            
-            
-      //     </div>
-      //   )}
-      // </div>
     )
   }
 }

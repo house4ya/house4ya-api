@@ -14,6 +14,10 @@ import DeleteProperty from './components/DeleteProperty';
 import EditHouse from './components/EditHouse';
 import Favourites from './components/Favourites';
 import EditProfile from './components/EditProfile';
+import Maps from './components/Maps';
+import WrappedMap from './components/MapRender'
+import SearchBox from './components/searchBox';
+
 
 function App() {
   return (
@@ -32,6 +36,10 @@ function App() {
       <Route path='/edit_property/:house/:owner' component={ EditHouse } />
       <Route path='/favourites' component={ Favourites } />
       <Route path='/edit_profile' component={EditProfile} />
+      {/* <Route path='/map_places' component={Maps} /> */}
+      <Route path='/map/:owner/:house' component={Maps} />
+      <Route path='/map_render' component={WrappedMap} />
+      <Route path='/search' component={SearchBox} />
       {/* <Redirect to='/home' /> */}
      </Switch>
       

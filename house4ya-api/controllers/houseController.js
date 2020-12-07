@@ -1,6 +1,7 @@
 const House = require('../models/house-model')
 const createError = require('http-errors')
 const User = require('../models/users-model')
+const { json } = require('express')
 
 module.exports.list = (req, res, next) => {
   House.find()
@@ -66,6 +67,30 @@ module.exports.editHouseImgs = (req, res, next) => {   //maybe it'bb be bether s
   } else { res.json("you have not permission")}
 }
 
+module.exports.editCoords = (req,res,next) => { 
+  House.findByIdAndUpdate({_id:req.params.house},{$set:{latitude: req.body.lat, longitude: req.body.lng}})
+  .then(houseLoc => {
+    res.status(201).json(houseLoc)
+    
+   })
+  // House.findById(req.params.house)
+  //.then(console.log("weybo" + req.body.city))
+   .catch(next)
+}
+
+module.exports.editCitatella = (req,res,next) => { 
+  House.findByIdAndUpdate({_id:req.params.house},{$set:{ LaCity: req.body.ciudad}})
+  .then(houseLoc => {
+    res.status(201).json(houseLoc)
+    
+   })
+  // House.findById(req.params.house)
+  .then(console.log("city in back-end " + JSON.stringify(req.body)) )
+   .catch(next)
+
+   //JSON.stringify(req.body)) )
+}
+
 module.exports.deleteHouse = (req, res, next) => {
   if ((req.user._id) == (req.params.owner)) {
     House.findByIdAndDelete(req.params.house)
@@ -83,7 +108,7 @@ module.exports.detailHouse = (req, res, next) => {
   House.findById(req.params.id)
   .then(house => {
     res.status(200).json(house)
-    console.log(house)
+    console.log(req.params.id)
   })
   .catch(next)
 }

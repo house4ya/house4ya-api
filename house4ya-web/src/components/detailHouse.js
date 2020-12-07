@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import HouseService from '../services/HouseService'
 import UserService from '../services/UserService'
+import WrappedMap from './MapRender'
 
 class detailHouse extends Component {
   
@@ -41,7 +42,7 @@ class detailHouse extends Component {
         <h3>{this.state.house.address}</h3>
         <p>{this.state.house.description}</p>
         <button onClick={this.deleteFav}> delete favourite</button>
-        
+        <WrappedMap lat={this.state.house.latitude} lng={this.state.house.longitude}></WrappedMap>
         
         
 

@@ -14,6 +14,16 @@ const houseSchema = new mongoose.Schema({
   photos: {
     type: [String]
   },
+  latitude: {
+    type: String
+    
+  },
+  longitude: {
+    type: String
+  },
+  LaCity: {
+    type: [Object]
+  },
   
   owner: { type: mongoose.Schema.Types.ObjectId,
   ref: 'User'},
