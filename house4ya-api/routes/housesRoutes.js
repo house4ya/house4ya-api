@@ -11,6 +11,8 @@ router.post('/create_house', houseController.createHouse)
 
 router.put('/edit_house/:owner/:house',uploader.single('photos'), houseController.editHouse)
 router.put('/edit_house/:owner/:house/imgs',uploader.array('photos'), houseController.editHouseImgs)
+router.put('/edit_house/:owner/:house/location', houseController.editCoords)
+router.put('/edit_house/:owner/:house/citatella', houseController.editCitatella)
 
 router.delete('/delete_house/:owner/:house', houseController.deleteHouse)
 

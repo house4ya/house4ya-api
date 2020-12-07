@@ -33,8 +33,24 @@ const editHousePhotos = (owner, houseId, photos) => {
 .then( res => Promise.resolve(res.data))
 }
 
+const editLocation = (owner, houseId, latitude) => http.put(`/houses/edit_house/${owner}/${houseId}/location`, latitude)
+.then( res => Promise.resolve(res.data))
+// .then (console.log("thisis si " + city)) //error is not here   hacer otrto service especifico para city
+// .then(console.log(typeof(city)))
+
+
+
+const editCity = (owner, houseId, city) => http.put(`/houses/edit_house/${owner}/${houseId}/citatella`, city)
+.then( res => Promise.resolve(res.data))
+//.then(console.log("city in editCity houseService " + city.ciudad))
+//.then( alert(city.ciudad))
+
+
+
+
+
 
 
 export default {
-  getHouses, createHouses, getProperties, getHouseDetail, deleteHouse, editHouse, editHousePhotos
+  getHouses, createHouses, getProperties, getHouseDetail, deleteHouse, editHouse, editHousePhotos, editLocation, editCity
 }
