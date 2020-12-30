@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import UserService from '../services/UserService'
 import { Link } from 'react-router-dom'
+import {faHome} from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Favourites extends Component {
   constructor(props){
@@ -30,13 +32,20 @@ class Favourites extends Component {
 
   render() {
     return(
-      <div>
-        <h1>this is favs</h1>
-        {this.state.favourites.map(fav =>
-          <Link to={`/home/${fav.id}`}> 
-            <h3>{fav.address}</h3>
-          </Link>
+      <div className="properties">
+        <div className="prop-box"> 
+          <h1 className="prop-title">Your favourites</h1>
+          {this.state.favourites.map(fav =>
+          <div>
+            <hr style={{color:"white"}} />
+            <Link to={`/home/${fav.id}`} className="fav-address"> 
+              <FontAwesomeIcon icon={faHome} className="house-icon"></FontAwesomeIcon>
+              <h3 >{fav.address}</h3>
+            </Link>
+          </div>
         )}
+        </div>
+        
       </div>
       
 

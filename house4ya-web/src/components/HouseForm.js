@@ -10,6 +10,7 @@ class HouseForm extends Component {
       address: '',
       description: '',
       squareMetres: '',
+      propertyType: 'flat',
       owner: '',
       interested: []
      
@@ -35,18 +36,33 @@ class HouseForm extends Component {
        })
   }
 
-  
+  goProperties =(e) => {
+    setTimeout(() => {
+      this.props.history.push('/properties')
+    }, 2000);
+  }
 
   render() {
     return(
-      <div>
-        <form onSubmit={this.handleFormSubmit}>
+      <div id="form-house" >
+        <hr width="50%"></hr>
+        <form onSubmit={this.handleFormSubmit} >
           <input name='address' type='text' placeholder='address' value={this.state.address} onChange={(e) => this.handleChange(e)} />
-          <input name='description' type='text' placeholder='write a description here...' value={this.state.description} onChange={ (e) => this.handleChange(e) } />
+          <textarea rows="12" name='description' type='text' placeholder='write a description here...' value={this.state.description} onChange={ (e) => this.handleChange(e) } />
+          <select name='propertyType' value={this.state.value} onChange={(e) => this.handleChange(e)} >
+            <option value="house">House</option>
+            <option value="appartament">Appartament</option>
+            <option value="flat">Flat</option>
+            <option value="penthouse">Penthouse</option>
+          </select>
+          <input name='price' type='number' placeholder='price' value={this.state.price} onChange={(e) => this.handleChange(e) } />
           <input name='squareMetres' type='number' placeholder='size in square meters'  value={this.state.squareMetres} onChange={ (e) => this.handleChange(e) } />
-          <input  type='submit' placeholder='upload property'/>
+          <input  className="edit-btn" type='submit' placeholder='upload property'onClick={this.goProperties}/>
 
         </form>
+        <div>
+
+        </div>
       </div>
     )
   }

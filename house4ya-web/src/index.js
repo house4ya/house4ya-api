@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'
 
-import 'bulma/css/bulma.min.css'
+
 
 ReactDOM.render(
 <BrowserRouter>

@@ -14,6 +14,8 @@ module.exports.createHouse = (req, res, next) => {
     address: req.body.address,
     description: req.body.description,
     squareMetres: req.body.squareMetres,
+    propertyType: req.body.propertyType,
+    price: req.body.price,
     owner: req.user._id
 
   })

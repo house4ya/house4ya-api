@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import HouseService from '../services/HouseService'
+import { withRouter, useHistory } from 'react-router-dom'
 
 class EditHouse extends Component {
   constructor(props){
@@ -21,9 +22,7 @@ class EditHouse extends Component {
     HouseService.editHouse(this.props.match.params.owner, this.props.match.params.house, this.state.house)
   }
 
-  printPhotoselected = () => {
-    console.log(this.state.house.photos)
-  }
+  
 
   handleFormPhotosSubmit = (event) => {
     event.preventDefault()
@@ -42,15 +41,12 @@ class EditHouse extends Component {
   
   }
 
-  // handleChangeImg = (event) => {
-  //   this.setState({
-  //     house: {
-  //       ...this.state.house,
-  //       photos: event.target.files
-  //     }
-      
-  //   })
-  // }
+  goHome = (e) => {
+    setTimeout(() => this.props.history.push("/home"), 1000 )
+  }
+
+  
+
 
   componentDidMount() {
     HouseService.getHouseDetail(this.props.match.params.house)
@@ -66,27 +62,29 @@ class EditHouse extends Component {
 
   render() {
     return(
-      <div>
-        <h1>{this.props.match.params.house}</h1>
-        <form onSubmit={this.handleFormSubmit}>
-    <input name='address' type='text' id='form-house' placeholder='adress' onChange={(e) => this.handleChange(e)} value={this.state.house.address} ></input>
+      <withRouter>
+         <div className="edit-house">
+        <h2>Edit your property</h2>
+        <form onSubmit={this.handleFormSubmit} id='form-edit-house'>
+          <input name='address' type='text'  placeholder='adress' onChange={(e) => this.handleChange(e)} value={this.state.house.address} ></input>
           <input name='squareMetres' type='number' placeholder='size' onChange={(e) => this.handleChange(e)} ></input>
-          <input name='description' type='textbox' placeholder='write a description'onChange={(e) => this.handleChange(e)} value={this.state.house.description}  ></input>
-          <input name='interested' type='text' value={this.state.house.interested} onChange={(e) => this.handleChange(e)} />
-          <button type='submit'>edit</button>
+          <textarea rows="7" name='description' type='textbox' placeholder='write a description'onChange={(e) => this.handleChange(e)} value={this.state.house.description}  ></textarea>
+          <input  name='interested' type='hidden' value={this.state.house.interested} onChange={(e) => this.handleChange(e)} />
+          <button type='submit' onClick={this.goHome}>update</button>
         </form>
-    {/* <h1> esto es el length ===> {this.state.house.photos.length}</h1> */}
     
-          <form onSubmit={this.handleFormPhotosSubmit}>
+          <form onSubmit={this.handleFormPhotosSubmit} id="form-edit-images">
             <input name='photos'  type='file' multiple /*form='form-house'*/  placeholder='search image'  onChange={(e) => this.handleChange(e)} ></input>
             <button type='submit' >upload photos</button>
           </form>
-    <h1>{this.state.house.photos.length}</h1>
+      <h4>You have chosen {this.state.house.photos.length} photos</h4>
           
              
-      <button onClick={this.printPhotoselected()} >print photo object</button>
+      
         
       </div>
+      </withRouter>
+     
     )
   }
 }

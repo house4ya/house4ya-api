@@ -1,6 +1,6 @@
 import React, { Component } from 'react' 
 import house4yaLogo from '../imgs/house4ya.logo.png'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import AuthService from '../services/AuthService'
 import { render } from 'react-dom'
 
@@ -9,92 +9,42 @@ class NavBar extends Component {
     super(props)
   }
 
-  handleLogout = () => {
+  handleLogout = (e) => {
     AuthService.logout()
+    setTimeout(() => {
+      this.props.history.push('/signin')
+    }, 1000);
     
   }
 
   render(){
     return(
-      <nav className="navbarw" role="navigation" aria-label="main navigation" >
-    <div className="navbar-brand">
-      <Link to='/home' >
-      <img src={house4yaLogo} width="60"  height="10" alt="house4ya logo" />
-  
-      </Link>
-      
-  
-      <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" href="todo">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-  
-    <div id="navbarBasicExample" className="navbar-menu">
-      <div className="navbar-start">
-        <a className="navbar-item" href="todo">
-          <input type="text" placeholder=" search..."></input>
-        </a>
-  
-        
-  
-        <a className="navbar-item" href="todo">
-          <input type="number" placeholder="min"></input>
-        </a>
-        <a className="navbar-item" href="todo">
-          <input type="number" placeholder="max"></input>
-        </a>
-        <div className="navbar-item has-dropdown is-hoverable">
-          <a className="navbar-link" href="todo">
-            Type
-          </a>
-  
-          <div className="navbar-dropdown">
-            <a className="navbar-item" href="todo">
-              House
-            </a>
-            <a className="navbar-item" href="todo">
-              Flat
-            </a>
-            <a className="navbar-item" href="todo">
-              Appartment
-            </a>
-            {/* </div> */}
-            {/* <hr className="navbar-divider"> */}
-            
-          </div>
-        </div>
-  
-        <div className="navbar-item  is-hoverable">
-          <a className="navbar-link" href="todo">
-            Filters
-          </a>
-  
+      <nav className="navbar" role="navigation" aria-label="main navigation" >
+    
+       
+
+        <div className="navbar-item-box">
+         <Link to='/home' id="logo-box">
+             <img src={house4yaLogo} alt="house4ya logo" />
+         </Link>
+         <Link to='/profile' className="button" >
+               Profile
+         </Link>
           
-        </div>
-      </div>
-  
-      <div className="navbar-end">
-        <div className="navbar-item">
-          <div className="buttons">
-            <Link to='/signup' className="button is-primary" href="todo">
-              <strong>Sign up</strong>
-            </Link>
-            <Link to='/signin' className="button is-light" href="todo">
-              Log in
-            </Link>
-            <Link to='/profile' className="button" >
-              Profile
-            </Link>
-            <button onClick={this.handleLogout}>Log out</button>
-            <Link to='/upload_house' className='button'>Upload property</Link>
-            <Link to='/properties' className='button'>Own properties</Link>
-            <Link to='/favourites' className='button'>See favourites</Link>
-          </div>
-        </div>
-      </div>
-    </div>
+         <Link to='/upload_house' className='button'>Upload property</Link>
+         <Link to='/properties' className='button'>Own properties</Link>
+         <Link to='/favourites' className='button'>See favourites</Link>
+         <Link to='/signup' className="button is-primary" href="todo">
+            <strong>Sign up</strong>
+         </Link>
+         <Link to='/signin' className="button is-light" href="todo">
+           Log in
+          </Link>
+          
+          <button className="navbar-logout-btn" onClick={this.handleLogout}>Log out</button>
+        </div>    
+      
+    
   </nav>
     )
 
@@ -102,4 +52,4 @@ class NavBar extends Component {
   
 }
 
-export default NavBar
+export default withRouter(NavBar) 

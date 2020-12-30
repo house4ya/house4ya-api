@@ -27,17 +27,20 @@ class Properties extends Component {
 
   render() {
     return(
-      <div>
-        <h1> Your properties</h1>
+      <div className="properties">
+        <h1 className="prop-title"> Your properties</h1>
         {this.state.properties.map(property => 
-        <Link to={`/property/${property.id}/${property.owner}`} key={property.id}>
-          <hr></hr>
-          <h3>{property.address}</h3>
-          <p>{property.description}</p>
-         <button><Link to={`/edit_property/${property.id}/${property.owner}`}>Edit property</Link></button> 
-          <button>delete</button>
-        </Link>
+        <div className="prop-box">
+          <Link to={`/property/${property.id}/${property.owner}`} key={property.id} >
+            <hr></hr>
+            <h3>{property.address}</h3>
+            <div className="btns-prop">
+              <button className="edit-btn"><Link to={`/edit_property/${property.id}/${property.owner}`}>Edit and add photos</Link></button> 
+              <button className="edit-btn">delete</button>
+            </div>
           
+        </Link>
+         </div> 
           )}
       </div>
       

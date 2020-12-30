@@ -66,18 +66,34 @@ class EditProfile extends Component {
 
   render() {
     return(
-      <div>
-            <h1>edit your profile</h1>
-            <form onSubmit={this.handleFormSubmit}>
-              <input name='email' placeholder="type your new email" value={this.state.profile.email} onChange={(e) => this.handleChange(e)} />
-              <input name="username" placeholder="type your new username" value={this.state.profile.username} onChange={(e) => this.handleChange(e)} />
-              <button type="submit">Update</button>
-                <div>
-                   <img src={this.state.profile.avatar} height='300' width='120' alt="profile"></img>
-
+      <div >
+       
+            
+            <form onSubmit={this.handleFormSubmit} className="profile-container">
+              <div>
+                <h1>edit your profile</h1>
+             </div>
+             <div className="profile-img-container">
+                   <img src={this.state.profile.avatar} className="profile-img" alt="profile"></img>
                  </div>
+             <div>
+                 <input type='file' name='avatar'   onChange={(e) => this.handleChange(e)} />
+             </div>
+             <div>
+               <input name='email' placeholder="type your new email" value={this.state.profile.email} onChange={(e) => this.handleChange(e)} />
+
+             </div>
+             <div>
+              <input name="username" placeholder="type your new username" value={this.state.profile.username} onChange={(e) => this.handleChange(e)} />
+             </div>
+             
+             <div>
+               <button type="submit" className="edit-btn">Update</button>
+             </div>
+                
+                 
             </form>
-            <input type='file' name='avatar'   onChange={(e) => this.handleChange(e)} />
+            
 
 
       </div>
