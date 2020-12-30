@@ -4,8 +4,8 @@ import { GoogleMap, withScriptjs, withGoogleMap, Marker } from 'react-google-map
 function MapRender(props) {
   return (
       <GoogleMap defaultZoom={18} defaultCenter={{ lat: Number(props.latitude), lng: Number(props.longitude) }}>
-      <Marker onClick={() => alert('dont touch me biatch')} position={{lat:Number(props.latitude),lng: Number(props.longitude)}}></Marker>
-  <h>{props.latitude}</h>
+      <Marker  position={{lat:Number(props.latitude),lng: Number(props.longitude)}}></Marker>
+  
     </GoogleMap>
     
     
@@ -35,5 +35,5 @@ function WrappedMap(props) {
  
 } 
 
-//-37.840184913966134, 144.93118995236625
+
 export default  WrappedMap 

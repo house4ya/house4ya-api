@@ -24,6 +24,13 @@ const houseSchema = new mongoose.Schema({
   LaCity: {
     type: [Object]
   },
+  price: {
+    type: Number
+  },
+  propertyType: {
+    type: String,
+    required: true
+  },
   
   owner: { type: mongoose.Schema.Types.ObjectId,
   ref: 'User'},

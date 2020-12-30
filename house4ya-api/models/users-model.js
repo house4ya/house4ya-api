@@ -30,6 +30,7 @@ const usersSchema = new mongoose.Schema({
     //match: [URL_PATTERN, 'Invalidad url pattern']
   },
   
+  
     
   
 }, {

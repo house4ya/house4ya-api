@@ -17,6 +17,7 @@ import EditProfile from './components/EditProfile';
 import Maps from './components/Maps';
 import WrappedMap from './components/MapRender'
 import SearchBox from './components/searchBox';
+import 'react-rangeslider/lib/index.css'
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
       <Route path='/map/:owner/:house' component={Maps} />
       <Route path='/map_render' component={WrappedMap} />
       <Route path='/search' component={SearchBox} />
+      
       {/* <Redirect to='/home' /> */}
      </Switch>
       

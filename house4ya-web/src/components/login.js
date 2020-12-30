@@ -29,10 +29,12 @@ class Login extends  Component {
     AuthService.login(this.state.user)
   }
 
+  
+
 
   render(){
     return(
-      <form onSubmit={this.handleFormSubmit}>
+      <form onSubmit={this.handleFormSubmit} className="login-form">
         <div>
           <input type="email" name="email" placeholder="email" onChange={(e) => this.handleChange(e)} value={this.state.user.email} />
         </div>
@@ -40,7 +42,7 @@ class Login extends  Component {
           <input type="password" name="password" placeholder="password"  onChange={(e) => this.handleChange(e) } value={this.state.user.password} />
         </div>
         <div>
-          <button type="submit">Sign in</button>
+          <button type="submit" >Sign in</button>
         </div>
       </form>
     )
