@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { withAuthConsumer } from '../context/AuthStore'
 import UserService from '../services/UserService'
 
 
@@ -50,5 +51,5 @@ class Profile extends Component {
   }
 }
 
-export default  Profile
+export default withAuthConsumer(Profile)
 

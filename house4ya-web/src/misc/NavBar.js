@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import house4yaLogo from '../imgs/house4ya.logo.png'
 import { Link, withRouter } from 'react-router-dom'
 import AuthService from '../services/AuthService'
-import { render } from 'react-dom'
+import { withAuthConsumer } from '../context/AuthStore'
 
 class NavBar extends Component {
   constructor(props){
@@ -11,6 +11,7 @@ class NavBar extends Component {
 
   handleLogout = (e) => {
     AuthService.logout()
+    .then(() => this.props.onUserChange(null))
     setTimeout(() => {
       this.props.history.push('/signin')
     }, 1000);
@@ -52,4 +53,4 @@ class NavBar extends Component {
   
 }
 
-export default withRouter(NavBar) 
+export default withAuthConsumer(withRouter(NavBar))
