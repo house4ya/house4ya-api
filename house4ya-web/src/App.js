@@ -18,6 +18,7 @@ import Maps from './components/Maps';
 import WrappedMap from './components/MapRender'
 import SearchBox from './components/searchBox';
 import 'react-rangeslider/lib/index.css'
+import PrivateRoute from './guards/PrivateRoute';
 
 
 function App() {
@@ -28,17 +29,17 @@ function App() {
        <Route exact path='/home' component={ Home } />
       <Route path='/signin' component={ Login } />
       <Route  path='/signup' component={ Register } />
-      <Route path='/profile' component={ Profile } />
-      <Route path='/upload_house' component={ HouseForm } />
-      <Route path='/properties' component={ Properties } />
+      <PrivateRoute exact path='/profile' component={ Profile } />
+      <PrivateRoute path='/upload_house' component={ HouseForm } />
+      <PrivateRoute path='/properties' component={ Properties } />
       <Route path='/house' component={ detailHouse } />
       <Route path='/home/:id' component={ detailHouse } />
       <Route path='/property/:house/:owner' component={ DeleteProperty } />
       <Route path='/edit_property/:house/:owner' component={ EditHouse } />
-      <Route path='/favourites' component={ Favourites } />
-      <Route path='/edit_profile' component={EditProfile} />
+      <PrivateRoute path='/favourites' component={ Favourites } />
+      <PrivateRoute path='/edit_profile' component={EditProfile} />
       {/* <Route path='/map_places' component={Maps} /> */}
-      <Route path='/map/:owner/:house' component={Maps} />
+      <PrivateRoute path='/map/:owner/:house' component={Maps} />
       <Route path='/map_render' component={WrappedMap} />
       <Route path='/search' component={SearchBox} />
       

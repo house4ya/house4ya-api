@@ -397,3 +397,24 @@ margin-top: 2%;
    color: white;
    margin: 2% auto 0% 5%
  }
+
+ /* map add address style */
+
+ .map-address {
+   background-color: rgb(5, 5, 5);;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+   background: url(./imgs/google-maps-address.jpg) no-repeat center center fixed;
+ }
+
+ .address-link {
+  color: #0fb617;
+  border-radius: 5%;
+  margin-top: 5%;
+  border-color: rgb(107, 179, 26);
+  border: solid;
+  text-decoration: none;
+ }

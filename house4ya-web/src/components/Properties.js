@@ -30,13 +30,13 @@ class Properties extends Component {
       <div className="properties">
         <h1 className="prop-title"> Your properties</h1>
         {this.state.properties.map(property => 
-        <div className="prop-box">
-          <Link to={`/property/${property.id}/${property.owner}`} key={property.id} >
+        <div className="prop-box" key={property.id}>
+          <Link  to={`/home/${property.id}`}>
             <hr></hr>
             <h3>{property.address}</h3>
             <div className="btns-prop">
               <button className="edit-btn"><Link to={`/edit_property/${property.id}/${property.owner}`}>Edit and add photos</Link></button> 
-              <button className="edit-btn">delete</button>
+              <button className="edit-btn"><Link to={`/property/${property.id}/${property.owner}`} key={property.id}>delete</Link></button>
             </div>
           
         </Link>

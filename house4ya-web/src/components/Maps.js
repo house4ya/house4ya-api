@@ -1,7 +1,7 @@
 import React from 'react'
 import PlacesAutoComplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import houseService from '../services/HouseService'
-import { useParams } from'react-router-dom'
+import { Redirect, useParams } from'react-router-dom'
 
   function Maps({match})  {
    const [address, setAdress ] = React.useState('');
@@ -9,6 +9,7 @@ import { useParams } from'react-router-dom'
      lat: null,
      lng: null
    })
+   const [isChosen, setIsChosen ] = React.useState(false)
 
    const [ TheCity, setTheCity ] = React.useState( {ciudad: null} ) //error not coming from here
    
@@ -39,6 +40,7 @@ import { useParams } from'react-router-dom'
     const handleCoorsSubmit = () => {
      houseService.editLocation(owner, house, coordinates )
      houseService.editCity(owner, house, TheCity)
+     setIsChosen(true)
      console.log(`this is the city in maps : ` + TheCity.ciudad)
      
    }
@@ -47,40 +49,38 @@ import { useParams } from'react-router-dom'
     
     componentRestrictions: {country: "ES"}
    }
+   if (isChosen) {
+    return  <Redirect to="/properties"></Redirect>
+  }else {
+    return(
+      
+     
+      <div className="map-address">
+        <PlacesAutoComplete value={address} onChange={setAdress} onSelect={handleSelect} searchOptions={ searchOptionsx } >
+          {({ getInputProps, suggestions, getSuggestionItemProps, loading}) => (
+            <div>
+              <input {...getInputProps({ placeholder: "type the property address"})} />
+             
+              <div>
+                {loading ? <div>...loading results</div> : null}
+ 
+                { suggestions.map(suggestion => {
+ 
+                  const style = { backgroundColor: suggestion.active ? '#5FD719' : '#ffff'}
+                  return <div {...getSuggestionItemProps( suggestion, { style } )}>{suggestion.description}</div>
+                })}
+              </div>
+            </div>
+          )}
+        </PlacesAutoComplete>
+        <div>
+              <button onClick={handleCoorsSubmit} >add address</button>
+        </div>
+        
+      </div>
+    )
+  }
+  }
    
-   return(
-     <div>
-       <PlacesAutoComplete value={address} onChange={setAdress} onSelect={handleSelect} searchOptions={ searchOptionsx } >
-         {({ getInputProps, suggestions, getSuggestionItemProps, loading}) => (
-           <div>
-             <input {...getInputProps({ placeholder: "type address"})} />
-             <div>
-               <p>longitude: {coordinates.lng}</p>
-               <p>latitude: {coordinates.lat}</p>
-               <h4>address: {address}</h4>
-         {/* <h4>city: {TheCity}</h4> */}
-             </div>
-             <div>
-               {loading ? <div>...loading results</div> : null}
-
-               { suggestions.map(suggestion => {
-
-                 const style = { backgroundColor: suggestion.active ? '#5FD719' : '#ffff'}
-                 return <div {...getSuggestionItemProps( suggestion, { style } )}>{suggestion.description}</div>
-               })}
-             </div>
-           </div>
-         )}
-       </PlacesAutoComplete>
-       <div>
-             <button onClick={handleCoorsSubmit} >add address</button>
-       </div>
-       <div>
-              <p>here owner id == {match.params.owner}</p>
-              <p>here house id == {match.params.house}</p>
-       </div>
-     </div>
-   )
- }
 
  export default Maps

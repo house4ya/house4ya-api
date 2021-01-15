@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import HouseService from '../services/HouseService'
-import { withRouter, useHistory } from 'react-router-dom'
+import { withRouter, useHistory, Link } from 'react-router-dom'
 
 class EditHouse extends Component {
   constructor(props){
@@ -71,13 +71,14 @@ class EditHouse extends Component {
           <textarea rows="7" name='description' type='textbox' placeholder='write a description'onChange={(e) => this.handleChange(e)} value={this.state.house.description}  ></textarea>
           <input  name='interested' type='hidden' value={this.state.house.interested} onChange={(e) => this.handleChange(e)} />
           <button type='submit' onClick={this.goHome}>update</button>
+          <Link to={`/map/${this.props.match.params.owner}/${this.props.match.params.house}`} className="address-link">add address </Link>
         </form>
     
           <form onSubmit={this.handleFormPhotosSubmit} id="form-edit-images">
             <input name='photos'  type='file' multiple /*form='form-house'*/  placeholder='search image'  onChange={(e) => this.handleChange(e)} ></input>
             <button type='submit' >upload photos</button>
           </form>
-      <h4>You have chosen {this.state.house.photos.length} photos</h4>
+      <h4>You have  {this.state.house.photos.length} photos</h4>
           
              
       
